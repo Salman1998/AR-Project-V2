@@ -1,0 +1,27 @@
+
+<app-nav></app-nav>
+<div class="main-conaiter">
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+
+
+<div class="chat-container" *ngIf="isAuthenticated" (click)="isChated()" routerLink="/chat">
+<div class="chat-logo">
+    <div class="typing-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="footer-wrapper pt-3">
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2024 AR Project. All Rights Reserved.</p>
+    <p>Designed by Salman Amin Khan</p>
+  </div>
+</footer>
+</div>
+</div>

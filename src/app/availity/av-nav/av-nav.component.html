@@ -1,0 +1,63 @@
+<!-- <nav class="navbar border-bottom border-body navbar-expand-lg ps-5 pe-5" data-bs-theme="dark">
+    <img src="https://apps.availity.com/public/apps/home/images/largeLogo.SVG" alt="Availity Logo" width="200" routerLink="/Availity" style="cursor: pointer;">
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="eligibility" routerLinkActive="active">Eligibility</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="claims" routerLinkActive="active">Claims</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="payerspaces" routerLinkActive="active">
+              Payer speces
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="remittanceviewer" routerLinkActive="active">Remittance</a>
+          </li>
+        </ul>
+        <div class="select-container">
+          <div class="input-group">
+            <select class="form-select" (change)="onSelect($event)">
+              <option style="color: #000;" value=''>{{'All'}}</option>
+              <option class="selectElement" style="color: #000;" value={{sList.name}} *ngFor="let sList of stateList; let i = index">{{sList.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+</nav> -->
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<nav class="navbar border-bottom border-body navbar-expand-lg ps-5 pe-5" data-bs-theme="dark">
+  <img src="https://apps.availity.com/public/apps/home/images/largeLogo.SVG" alt="Availity Logo" width="200" routerLink="/Availity" class="navbar-brand" style="cursor: pointer;">
+   
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+              <a class="nav-link" aria-current="page" routerLink="eligibility" routerLinkActive="active">Eligibility</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="claims" routerLinkActive="active">Claims</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="payerspaces" routerLinkActive="active">Payer Spaces</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="remittanceviewer" routerLinkActive="active">Remittance</a>
+          </li>
+      </ul>
+  </div>
+  <div class="select-container">
+    <div class="input-group">
+        <select class="form-select" (change)="onSelect($event)" aria-label="Select an option">
+            <option style="color: #000;" value=''>{{'All'}}</option>
+            <option class="selectElement" style="color: #000;" value={{sList.name}} *ngFor="let sList of stateList; let i = index">{{sList.name}}</option>
+        </select>
+    </div>
+</div>
+</nav>

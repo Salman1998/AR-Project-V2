@@ -1,0 +1,33 @@
+<app-error-alert [error]="error" *ngIf="error"></app-error-alert>
+
+<div class="singupBox" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="signup-container">
+    <form class="signup-form" #signup="ngForm" (ngSubmit)="onSingup(signup)">
+        <div class="form-container">
+      <h2>Sign Up</h2>
+
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" ngModel name="name" required (keypress.enter)="onSingup(signup)">
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" ngModel name="email" required email (keypress.enter)="onSingup(signup)">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" ngModel name="password" required minlength="8" (keypress.enter)="onSingup(signup)">
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" ngModel name="terms" required>
+        <label for="terms" style="margin-left: 10px;">Accept Terms & Conditions</label>
+    </div>
+      <button type="submit" class="signup-btn" [disabled]="signup.invalid">Sign Up</button>
+      <p class="login-link">Already have an account? <a [routerLink]="['/login']">Login here</a></p>
+      </div>
+    </form>
+</div>

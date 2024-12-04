@@ -1,0 +1,187 @@
+<div class="webLoader" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
+<app-slider #slider [selectIns]="selectedInsData"></app-slider>
+
+<div class="container">
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 0;">
+    <h3>Eligibility</h3>
+    <button class="btn btn-primary" (click)="onAddInsurance()">Add</button>
+    <!-- <button class="btn btn-primary" (click)="onStoreData()">Fatch</button> -->
+  </div>
+  <hr>
+
+<div class="filters-container">
+  <div class="filters">
+    <input class="form-control me-2" id="inameSearch" type="text" [(ngModel)]="searchText" (input)="filterInsurance()" placeholder="Search insurance name"/>
+    <!-- <i class="fa-solid fa-xmark search-input-close" *ngIf="searchText" (click)="onClearSearch()"></i> -->
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-container">
+    <thead class="bg-primary">
+      <tr>
+        <th class="d-sm-table-cell" scope="col">Id</th>
+        <th class="d-sm-table-cell" scope="col">Name</th>
+        <th class="d-none d-md-table-cell" scope="col">Eligibility</th>
+        <th class="d-none d-xl-table-cell" scope="col">Member ID</th>
+        <th class="d-none d-lg-table-cell" scope="col">Claims</th>
+        <th class="d-none d-lg-table-cell" scope="col">Remit</th>
+        <th class="d-none d-lg-table-cell" scope="col">Recon/Appeal</th>
+        <th class="d-sm-table-cell" scope="col">Edit</th>
+        <th class="d-sm-table-cell" scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let insurance of filteredInsuranceData; let i = index" (click)="show(insurance)">
+        <td (click)="slider.openSlider(type)" >{{ i+1 }}</td>
+        <td (click)="slider.openSlider(type)" >{{ insurance?.iname }}</td>
+        <td (click)="slider.openSlider(type)" class="d-none d-md-table-cell">{{ insurance?.eligibility }}</td>
+        <td (click)="slider.openSlider(type)" class="d-none d-xl-table-cell">{{ insurance?.member_Id }}</td>
+        <td (click)="slider.openSlider(type)" class="d-none d-lg-table-cell">{{ insurance?.claims }}</td>
+        <td (click)="slider.openSlider(type)" class="d-none d-lg-table-cell">{{ insurance?.remit }}</td>
+        <td (click)="slider.openSlider(type)" class="d-none d-lg-table-cell">{{ insurance?.appeal }}</td>
+        <td class="d-sm-table-cell"><i class="fa-regular fa-pen-to-square ticon" (click)="onEdit(insurance?.key)"></i></td>
+        <td><a><i class="fa-solid fa-trash" style="padding-left: 18px;" (click)="onDeleted(insurance?.key)"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<div class="overlay" *ngIf="isAdded">
+  <div class="Edit-container" (keydown.esc)="onClose()">
+    <h2 class="pb-3">Edit Form</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmitAdded(f.value)">
+      <div class="form-group">
+        <label for="iname">Name of Input</label>
+        <input type="text" id="iname" ngModel name="iname" placeholder="Enter insurance name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="eligibility">Eligibility</label>
+        <select id="eligibility" ngModel name="eligibility" required>
+          <option defaultSelected value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="member_Id">Member ID</label>
+        <select id="member_Id" ngModel name="member_Id" required>
+          <option defaultSelected value="Required">Required</option>
+          <option value="Not required">Not Required</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="claims">Claims</label>
+        <select id="claims" ngModel name="claims" required>
+          <option defaultSelected value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="remit">Remit</label>
+        <select id="remit" ngModel name="remit" required>
+          <option defaultSelected value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="appeal">Recon/Appeal</label>
+        <select id="appeal" ngModel name="appeal" required>
+          <option defaultSelected value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
+      </div>
+    </form>
+  </div>
+  </div>
+
+
+  <div class="overlay" *ngIf="isEdit">
+    <div class="Edit-container" (keydown.esc)="onClose()">
+      <h2 class="pb-3">Edit Form</h2>
+      <form #f="ngForm" (ngSubmit)="onSubmitEdit(f.value)">
+        <div class="form-group">
+          <label for="iname">Name of Input</label>
+          <input type="text" id="iname" [ngModel]="editValue?.iname" name="iname" placeholder="Enter insurance name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="eligibility">Eligibility</label>
+          <select id="eligibility" [ngModel]="editValue?.eligibility" name="eligibility">
+            <option defaultSelected [value]="editValue?.eligibility">Select one</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="member_Id">Member ID</label>
+          <select id="member_Id" [ngModel]="editValue?.member_Id" name="member_Id">
+            <option defaultSelected [value]="editValue?.member_Id">Select one</option>
+            <option value="Required">Required</option>
+            <option value="Not required">Not Required</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="claims">Claims</label>
+          <select id="claims" [ngModel]="editValue?.claims" name="claims">
+            <option defaultSelected [value]="editValue?.claims">Select one</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="remit">Remit</label>
+          <select id="remit" [ngModel]="editValue?.remit" name="remit">
+            <option defaultSelected [value]="editValue?.remit">Select one</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="appeal">Recon/Appeal</label>
+          <select id="appeal" [ngModel]="editValue?.appeal" name="appeal">
+            <option defaultSelected [value]="editValue?.appeal">Select one</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+  
+  
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+          <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  

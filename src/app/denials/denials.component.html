@@ -1,0 +1,30 @@
+<app-dslider #dslider></app-dslider>
+<div class="container">
+<app-add-back></app-add-back>
+<div class="container-fluid">
+    <div class="row">
+        <div class="main-container">
+            <div class="app-container">
+                <div class="table table-hover table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="font-weight: bold;">Code</th>
+                                <th style="font-weight: bold;">Description</th>
+                                <th style="font-weight: bold;">Note Tool</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let denial of denials; let i = index" (click)="dslider.openSliders(type, denial)">
+                                <td> {{ denialcode(i) + '-' + denial.code }} </td>
+                                <td> {{ denial.reason }} </td>
+                                <td> {{ denial.noteTool }} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

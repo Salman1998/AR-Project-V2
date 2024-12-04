@@ -1,0 +1,281 @@
+
+
+/* Base Styles - Applies to All Screen Sizes */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6;
+  padding: 40px;
+  color: #333;
+}
+
+.filters-container {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.filters .form-control {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.filters .form-control:focus {
+  outline: none;
+  border-color: var(--clr-tbth-primary);;
+  box-shadow: 0px 4px 12px rgba(0, 123, 255, 0.25);
+}
+
+/* Table Styles */
+.table-container {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 20px;
+  
+}
+
+.search-input-close{
+  position: relative;
+  left: -180px;
+  top: -36px;
+  font-size: 18px;
+  cursor: pointer;
+  &:hover{
+    color: rgb(255, 93, 93);
+  }
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+  background-color: var(--clr-tbth-primary);;
+  color: white;
+  /* background-color: #f2f2f2; */
+  /* color: #000; */
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.table tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+  /* transform: scale(1.02); */
+}
+
+.table tbody td {
+  padding: 15px;
+  border-bottom: 1px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table tbody td img {
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  /* transition: transform 0.3s ease; */
+}
+
+.table tbody td img:hover {
+  transform: scale(1.1);
+}
+
+/* .table tbody .edit-icon {
+  color: var(--clr-tbth-primary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.table tbody .edit-icon:hover {
+  color: #f13c23;
+} */
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+} 
+
+.Edit-container {
+  width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  grid-column: span 2;
+  /* text-align: center; */
+}
+
+.ticon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.ticon:hover {
+  color: #007bff;
+}
+
+.note-icon {
+  cursor: pointer;
+  padding-left: 12px;
+  color: #555;
+}
+
+.fa-trash {
+  /* padding-left: 18px; */
+  text-align: center; 
+  cursor: pointer; 
+  color: #333333;
+  margin-top: -20px;
+}
+.fa-trash:hover{
+  color: rgb(255, 93, 93);
+}
+
+.note-icon:hover {
+  color: #2196f3;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .filters .form-control {
+    max-width: 400px;
+  }
+
+  .table thead th,
+  .table tbody td {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .filters .form-control {
+    max-width: 300px;
+  }
+
+  .table thead th,
+  .table tbody td {
+    padding: 10px;
+  }
+
+  .table tbody td img {
+    width: 40px;
+    height: auto;
+  }
+
+  .filters .form-control {
+    max-width: 300px; /* Adjust the maximum width for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .filters .form-control {
+    max-width: 100%;
+  }
+
+  .table-container {
+    margin-top: 15px;
+  }
+
+  .table thead th,
+  .table tbody td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .table tbody td img {
+    width: 35px;
+    height: auto;
+  }
+
+  .filters .form-control {
+    max-width: 100%; /* Input field takes full width on smaller screens */
+    padding: 10px 12px; /* Slightly reduce padding for better fit */
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+}
+
+@media (max-width: 576px) {
+  .table thead th,
+  .table tbody td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .table tbody td img {
+    width: 30px;
+    height: auto;
+  }
+
+  .filters .form-control {
+    padding: 8px 10px; /* Further reduce padding on extra small screens */
+    font-size: 12px; /* Adjust font size to maintain balance */
+  }
+  
+}

@@ -1,0 +1,5 @@
+<div class="reaction-box" [ngClass]="{ 'visible': reactionsVisible}">
+  <div class="reaction" *ngFor="let reaction of reactions" (click)="onAddReaction(reaction)">
+    {{ reaction }}
+  </div>
+</div>

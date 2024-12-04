@@ -1,0 +1,43 @@
+.col-12 {
+    width: 100%;
+    /* margin: 40px auto; */
+    padding: 20px;
+    /* background-color: #fff; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.img-box{
+    display: flex;
+    justify-content: center;
+}
+
+.login-box, .claim-box, .ebv-box img {
+    margin-top: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 100%;
+}
+.claim-box img {
+    margin-top: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 100%;
+}
+
+
+/* .ebv-box img {
+    margin-top: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 100%;
+} */
+
+/* realy code end */

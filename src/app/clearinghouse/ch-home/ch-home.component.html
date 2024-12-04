@@ -1,0 +1,13 @@
+
+<div class="container">   
+    <div class="main-container">
+    <div class="card" style="cursor: pointer;" *ngFor="let ChData of chData; let i = index" routerLink={{ChData.chName}}>
+        <div class="img-container" >
+            <img src='{{ ChData.chImg }}' alt="Event Image" class="card-image ">
+        </div>
+        <div class="card-content">
+            <div class="card-title">{{ ChData.chName }}</div>
+        </div>
+    </div>
+</div> 
+</div>

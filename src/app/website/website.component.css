@@ -1,0 +1,197 @@
+.ticon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.ticon:hover {
+  color: #007bff;
+}
+
+.copy-cell {
+  position: relative;
+  cursor: pointer;
+}
+
+.copy-cell app-copytoclip {
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+}
+
+/* Filter Box */
+.filter-box input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Note Icon */
+.note-icon {
+  cursor: pointer;
+  padding-left: 12px;
+  color: #555;
+}
+
+.note-icon:hover {
+  color: #2196f3;
+}
+
+/* Web Error */
+.web-error {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  z-index: 998;
+}
+
+/* Modal Overlay */
+.web-outter-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal Container */
+.web-container {
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Elements */
+.form-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.toggle-password:hover {
+  color: #007bff;
+}
+
+/* Form Buttons */
+.form-buttons button {
+  flex: 1;
+  margin: 5px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.fa-trash {
+  /* padding-left: 18px; */
+  text-align: center; 
+  cursor: pointer; 
+  color: #333333;
+  margin-top: -20px;
+}
+.fa-trash:hover{
+  color: rgb(255, 93, 93);
+}
+.fa-eye{
+  margin-top: 15px;
+}
+.fa-eye-slash{
+  margin-top: 15px;
+  margin-right: -1px;
+}
+  .webLoader{
+    margin-top: -10px;
+  }
+  
+  .search-input-close{
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    padding: 12px; 
+    font-size: 18px; 
+    cursor: pointer;
+
+    &:hover{
+      color: rgb(255, 93, 93);
+    }
+  }
+  
+/* Responsive Design */
+@media (max-width: 768px) {
+  .web-container {
+    padding: 15px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .toggle-password {
+    font-size: 1rem;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .web-container {
+    padding: 10px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .toggle-password {
+    font-size: 0.9rem;
+  }
+}  

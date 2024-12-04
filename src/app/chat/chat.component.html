@@ -1,0 +1,71 @@
+<div class="container" style="margin-top:-50px ;" *ngIf="currentUser$ | async as userData">
+<div class="possitionBox">
+<div class="chat-container">
+
+  
+
+    <div class="messages-container">
+      <span class="span-mgs" style="margin-top: 30px;"  *ngFor="let message of messages; let i = index">
+      <span *ngFor="let item of message | keyvalue">
+    
+
+            <div class="message"*ngIf="currentUid === item.value?.uid" (mouseover)="reactions.showReactions()" (mouseleave)="reactions.hideReactions()">
+              <app-chat-activity (mouseover)="reactions.onDefualt(userData.uid, item.key, userData.name)" #reactions></app-chat-activity>
+              <p style="font-size: 12px; margin: 0;">{{ item.value.name }}</p>
+              <p style="margin: 0;">{{ item.value.message }}</p>
+              <div class="timestamp">
+                {{ item.value.time }}
+              </div>
+              <span *ngFor="let reactions of item.value.reactions | keyvalue">
+                    <div class="reactionBox" *ngIf="reactions.value.key === item.key">
+                      <div class="actionBox" > <span class="numOfReaction" >{{reactions.length}}</span> {{ reactions.value.reaction }}</div>
+                      <div class="actionContainer">
+                        <div class="actionBoxs" *ngFor="let reactions of item.value.reactions | keyvalue" >
+                          <span class="reactionContainer" >
+                            {{ reactions.value.reaction}}<span class="mreactedUser">{{reactions.value.name}}</span>
+                          </span>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </span>
+            </div>
+          
+          <div class="other-message" *ngIf="currentUid !== item.value?.uid" (mouseover)="otherReaction.showReactions()" (mouseleave)="otherReaction.hideReactions()">
+            <app-other-chat-activity (mouseover)="otherReaction.onDefualt(userData.uid, item.key, userData.name)" #otherReaction></app-other-chat-activity>
+            <p style="font-size: 12px; margin: 0;">{{ item.value.name }}</p>
+            <p style="margin: 0;">{{ item.value.message }}</p>
+            <div class="timestamp">
+              {{ item.value.time }}
+            </div>
+            <span *ngFor="let reactions of item.value.reactions | keyvalue">
+                  <div class="other-reactionBox" *ngIf="reactions.value.key === item.key">
+                    <div class="actionBox"> <span class="numOfReaction" >{{reactions.length}}</span> {{ reactions.value.reaction }}</div>
+                    <div class="actionContainer">
+                      <div class="actionBoxs" *ngFor="let reactions of item.value.reactions | keyvalue">
+                        <span class="reactionContainer">
+                          {{ reactions.value.reaction}} <span class="reactedUser">{{reactions.value.name}}</span>
+                        </span>
+
+                      </div>
+                    </div>
+                  </div>
+                </span>
+          </div>
+    </span>
+    </span>
+    </div>
+    
+    <div class="chat-input-container">
+      <input 
+        type="text" 
+        class="chat-input" 
+        placeholder="Type a message" 
+        [(ngModel)]="newMessage"
+        (keyup.enter)="onSendMessage()" 
+      >
+      <button class="send-button" (click)="onSendMessage()" [disabled]="!newMessage">Send</button>
+    </div>
+</div>
+</div>
+</div>

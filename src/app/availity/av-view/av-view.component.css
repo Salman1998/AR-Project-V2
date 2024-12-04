@@ -1,0 +1,163 @@
+.main-container{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+}
+
+.app-conatiner{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* app container section end */
+
+.container-box-cs {
+    width: 300px;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.logo-cs {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(135deg, #4d4f53, #4d4f53 51%, #30383f 52%, #30383f);
+}
+
+.logo-cs span {
+    font-size: 36px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.description-cs{
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+/* claims section end */
+
+.container-box-ev {
+    width: 300px;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.logo-ev {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px; /* Rounded corners */
+    margin: 0 auto;
+    background: linear-gradient(135deg, #ed5624, #ed5624 51%, #da5027 52%, #da5027);
+}
+
+.logo-ev span {
+    font-size: 36px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.description-ev {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* eligibility section end */
+
+.container-box-ps {
+    width: 300px;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.logo-ps {
+    width: 100px;
+    height: 100px;
+    /* background-color: #000;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px; /* Rounded corners */
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(135deg, #4d4f53, #4d4f53 51%, #30383f 52%, #30383f);
+}
+
+.logo-ps span {
+    font-size: 36px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.description-ps {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* payer speces senction end */
+
+.container-box-rv {
+    width: 300px;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.logo-rv {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px; /* Rounded corners */
+    margin: 0 auto;
+    background: linear-gradient(135deg, #0b8c6f, #0b8c6f 51%, #157461 52%, #157461);
+}
+
+.logo-rv span {
+    font-size: 36px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.description-rv {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* remittance viwer section end */

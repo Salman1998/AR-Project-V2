@@ -1,0 +1,124 @@
+.note-container{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 990;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+
+.note-outter{
+    width: 600px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.note-inner{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.heading-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    
+}
+hr{
+    padding: 0;
+}
+.heading-box .fa-xmark{
+    font-size: 20px;
+}
+
+.close-button{
+    border: none;
+    background-color: transparent;
+}
+
+.heading-box .fa-xmark:hover{
+    color: red
+}
+form{
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+
+}
+.content-box{
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+    
+}
+
+.content-box textarea{
+    width: 100%;
+    resize: none;
+    height: 100%;
+    overflow-y: scroll;
+    border: none;
+    outline: none;
+    margin-left: -1px;
+}
+.content-box textarea:focus{
+    border: none;
+    outline: none;
+    border-color: #ccc;
+}
+
+.note-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    position: fixed; /* Use fixed to cover the viewport */
+    top: 0;
+    left: 0;
+    z-index: 990;; /* Ensure it's on top of other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.overlay {
+    position: static; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; 
+}
+
+.note-outter {
+    width: 600px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 990; /* Ensure it’s above the overlay */
+}
+
+.note-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Add other styles as needed */

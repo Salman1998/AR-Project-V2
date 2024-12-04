@@ -1,0 +1,76 @@
+<!-- eligibility section -->
+<div class="slider" [class.open]="isOpen" *ngIf="type === 'eligibility'" (keydown.enter)="closeSlider()">
+  <i class="fa-solid fa-xmark" (click)="closeSlider()"></i>
+  <div class="slider-content">
+    
+    <div class="side-panel" *ngIf="type === 'eligibility'">
+      <div class="logo-container">
+        <img [src]='selectIns.insImg' alt="Logo">
+        <div class="insurance-name">{{selectIns.iname}}</div>
+      </div>
+        <div class="content">
+          <div class="content-item">
+            <span class="content-title">Eligibility:</span>
+            <span class="content-value">{{selectIns.ebv}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">Member ID:</span>
+            <span class="content-value">{{selectIns.membId}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">Claim:</span>
+            <span class="content-value">{{selectIns.claims}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">Remit:</span>
+            <span class="content-value">{{selectIns.remit}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">State: </span>
+              <span class="content-value content-value-last">
+                <span *ngFor="let item of selectIns.sList">{{ item.sname + ", " }}</span>
+                <span *ngFor="let item of selectIns.sList">{{ item.sname + ", " }}</span>
+               </span>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- eligibility section -->
+<div class="slider" [class.open]="isOpen" *ngIf="type === 'claims'" (keydown.esc)="closeSlider()">
+  <i class="fa-solid fa-xmark" (click)="closeSlider()"></i>
+  <div class="slider-content">
+    
+    <div class="side-panel" *ngIf="type === 'claims'">
+      <div class="logo-container">
+        <img [src]='selectIns.insImg' alt="Logo">
+        <div class="insurance-name">{{selectIns.iname}}</div>
+      </div>
+        <div class="content">
+          <div class="content-item">
+            <span class="content-title">Eligibility:</span>
+            <span class="content-value">{{selectIns.eligibility}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">Member ID:</span>
+            <span class="content-value">{{selectIns.member_Id}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">Claim:</span>
+            <span class="content-value">{{selectIns.claims}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">Remit:</span>
+            <span class="content-value">{{selectIns.remit}}</span>
+          </div>
+          <div class="content-item">
+            <span class="content-title">State: </span>
+              <span class="content-value content-value-last">
+                <span *ngFor="let item of selectIns.sList">{{ item.sname + ", " }}</span>
+               </span>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #424242; /* Dark color for the navbar */
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.brand-title {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.navbar-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; /* Center the ul */
+    margin-left: -40px;
+}
+
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    position: relative;
+}
+
+.navbar-links li {
+    padding: 0 1rem;
+    position: relative;
+    cursor: pointer; /* Add cursor pointer for dropdown */
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* Hide by default */
+    position: absolute;
+    background-color: #424242;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    margin-top: 13px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown-content.show {
+    display: flex; /* Show when 'show' class is added */
+}
+
+.auth-buttons {
+    display: flex;
+}
+
+.auth-buttons button {
+    margin-left: 1rem;
+    padding: 0.3rem 0.8rem;
+    border: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-buttons button:hover {
+    background-color: #00aced; /* Light blue color on hover */
+}
+
+.toggle-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 976px) {
+    .navbar{
+        flex-direction: column;
+    }
+    .toggle-button {
+        display: flex;
+        position: absolute;
+        top: 12px;
+        right: 16px;
+    }
+    .brand-title{
+        padding-bottom: 3px;
+        text-align: left;
+        width: 100%;
+    }
+    .navbar-links {
+        display: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+        position: absolute;
+        background-color: #424242;
+    }
+
+    .navbar-links li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #6b6b6b;
+    }
+
+    .navbar-links li.topLi{
+        border-top: 1px solid #6b6b6b;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .dropdown-content {
+        /* position: static; */
+        box-shadow: none;
+        width: 100%;
+        margin-top: 0;
+        z-index: 998;
+    }
+    .auth-buttons{
+        /* display: flex; */
+        justify-content: center;
+        width: 100%;
+        /* border-top: 1px solid #4b4b4b; */
+        /* padding-bottom: 8px; */
+        position: absolute;
+        /* margin-left: 85px; */
+        margin-top: 197px;
+        display: none;
+        background-color: #424242;
+        padding: 5px 0;
+        flex-direction: column;
+    }
+    .auth-buttons button{
+        margin-left: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #6b6b6b;
+        background-color: transparent;
+    }
+    .auth-buttons .login-btn{
+        border-top: 1px solid #6b6b6b;
+    }
+    .auth-buttons .logout-btn{
+        border-top: 1px solid #6b6b6b;
+    }
+    .auth-buttons.active{
+        display: flex;
+    }
+}
+@media screen and (max-width: 435px) {
+    
+    .navbar-links {
+        /* display: flex; */
+        width: 100%;
+        position: absolute;
+        top: 78px;
+        background-color: #424242;
+    }
+    .auth-buttons{
+        position: relative;
+    }
+}

@@ -1,0 +1,103 @@
+<div class="slider" [class.open]="isOpen" *ngIf="type === 'denials'">
+    <i class="fa-solid fa-xmark" (click)="closeSlider()"></i>
+    <div class="slider-content">
+      
+      <div class="side-panel" *ngIf="type === 'denials'">
+        <div class="logo-container">
+          <div class="insurance-name">{{ codeAdder() + '-' + denials.code + ' (' + denials.reason + ')'}}</div>
+        </div>
+        <div class="content">
+          <div class="content-item" *ngIf="dtypechanged() === 'single'">
+            <p class="content-title">Audio:</p>
+            <audio controls *ngIf="denials.reason === 'Duplicate'">
+              <source src="audio/CO-18_Duplicate_.ogg" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio>
+            <audio controls *ngIf="denials.reason === 'Capitation'">
+              <source src="audio/CO-24_Capitation_.ogg" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio>
+            <audio controls *ngIf="denials.reason === 'Pre-existence Condition'">
+              <source src="audio/CO-51_Per-existing.ogg" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio>
+            <!-- <audio controls *ngIf="denials.reason === 'Maximum benefits exhausted'">
+              <source src="audio/CO-119_Maximum_Benefit_Met.ogg" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio> -->
+            <audio controls *ngIf="denials.reason === 'Authorization'">
+              <source src="audio/CO-197_Authorization.ogg" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio>
+            <audio controls *ngIf="denials.reason === 'Non Covered Services'">
+              <source src="audio/CO-96_or_PR-96_Non Covered_.ogg" type="audio/ogg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          <ng-tamplate>
+            <div class="content-item" *ngIf="dtypechanged() === 'double'">
+              <p class="content-title">Audio:</p>
+              
+
+              <div class="content-audio" *ngIf="denials.reason === 'Maximum benefits exhausted'">
+                <p class="content-value">{{denials.subreason1 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <p class="content-value">{{denials.subreason2 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio2" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+              </div>
+
+              <div class="content-audio" *ngIf="denials.reason === 'Not Medical Necessity'">
+                <p class="content-value">{{denials.subreason1 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <p class="content-value">{{denials.subreason2 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio2" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+              </div>
+
+              <div class="content-audio" *ngIf="denials.reason === 'Inclusive/Global to Surgery'">
+                <p class="content-value">{{denials.subreason1 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <p class="content-value">{{denials.subreason2 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio2" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+              </div>
+            
+              <div class="content-audio" *ngIf="denials.reason === 'Non Covered Services'">
+                <p class="content-value">{{denials.subreason1 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <p class="content-value">{{denials.subreason2 + ':'}}</p>
+                  <audio controls>
+                    <source [src]="denials.audio2" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+              </div>
+            
+            </div>
+          </ng-tamplate>
+          <div class="content-item"><br>
+            <p class="content-title">Follow Up:</p>
+            <p class="content-value">{{denials.desc}}</p>
+            <p class="content-value mb-5">{{denials.desc2}}</p>
+          </div>
+        </div>
+    </div>
+</div>

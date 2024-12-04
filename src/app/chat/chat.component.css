@@ -1,0 +1,338 @@
+/* Chat container styling */
+.possitionBox{
+    width: 100%;
+    height: 99vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* background-color: red; */
+    /* z-index: 9999; */
+    /* background-color: red; */
+}
+
+.chat-container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    /* height: calc(100% + 90px); */
+    height: calc(100% - 50px);
+    margin-top: 50px;
+  }
+  
+  /* Chat message container */
+.messages-container {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .username {
+    margin: 0; /* No margin for username */
+    font-size: 12px; /* Font size for username */
+  }
+  
+  .message {
+    margin: 0; /* No margin for message */
+  }
+  
+  
+  /* Chat input area */
+  .chat-input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Chat input styling */
+  .chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  /* Send button styling */
+  .send-button {
+    margin-left: 10px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #45a049;
+  }
+  
+
+  .action-tab{
+    position: relative;
+    width: 200px;
+    height: 30px;
+    background-color: #2196F3;
+    padding: 0 10px;
+    line-height: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* display: none; */
+  }
+
+  .action-options{
+    display: flex;
+    justify-content: space-between;
+  }
+  .option:hover{
+    transform: scale(1.1);
+  }
+  .message-bubble:hover .action-tab{
+    display: block;
+  }
+
+  .message {
+    max-width: 300px;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 5px;
+    position: relative;
+    font-size: 16px;
+    word-wrap: break-word;
+    align-items: end;
+    justify-self: end;
+  }
+
+  .message::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #2196F3 transparent transparent transparent;
+  }
+
+  .other-message {
+    max-width: 300px;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 5px;
+    position: relative;
+    font-size: 16px;
+    word-wrap: break-word;
+    align-items: end;
+    justify-self: start;
+  }
+
+  .other-message::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #2196F3 transparent transparent transparent;
+  }
+
+
+  .timestamp {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 12px;
+    opacity: 0.8;
+    /* margin-top: 5px; */
+  }
+
+  .reactionBox{
+    width: 30px; 
+    height: 30px; 
+    background-color: #2196F3; 
+    border-radius: 20px; 
+    text-align: center; 
+    line-height: 30px; 
+    position: absolute; 
+    left: -10px; 
+    top: -10px;
+    color: #000;
+    &:hover .actionBox{
+      display: none;
+    };
+    &:hover .actionBoxs{
+      display: block;
+    };
+    &:hover .numOfReaction{
+      color: transparent;
+    }
+  }
+
+  .reactionBox .actionBox{
+    width: 30px; 
+    height: 30px; 
+    background-color: #2196F3; 
+    border-radius: 20px; 
+    text-align: center; 
+    line-height: 30px; 
+    position: relative;
+    color: #000;
+    font-size: 20px;
+    
+  }
+  .reactionBox .actionBoxs{
+    display: flex;
+    flex-direction: column;
+    
+    width: 30px; 
+    height: 30px; 
+    /* background-color: #2196F3;  */
+    /* border-radius: 20px 20px 0 0 ;  */
+    text-align: center; 
+    line-height: 30px; 
+    position: relative;
+    color: #000;
+    display: none; 
+    right: 1px;
+    z-index: 999;
+    font-size: 20px;
+    &:hover .reactedUser {
+      display: block;
+    }
+    &:hover .mreactedUser {
+      display: block;
+    }
+
+  }
+
+  .reactionBox .numOfReaction{
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    font-size: 12px;
+    /* background-color: #2196F3; */
+  }
+  
+  .reactionBox .actionContainer{
+    background-color: #2196F3; 
+    border-radius: 20px; 
+    z-index: 999; 
+    position: absolute; 
+    display: flex;
+    /* left: -30px;  */
+    top: 0;
+    transform: rotateY(180deg);
+
+    
+  }
+  
+  .other-reactionBox{
+    width: 30px; 
+    height: 30px; 
+    background-color: #2196F3; 
+    border-radius: 20px; 
+    text-align: center; 
+    line-height: 30px; 
+    position: absolute; 
+    right: -10px; 
+    top: -8px;
+    color: #000;
+    &:hover .actionBoxs{
+      display: block;
+    };
+    &:hover .actionBox{
+      display: none;
+    };
+    &:hover .numOfReaction{
+      color: transparent;
+    }
+  }
+  
+  .other-reactionBox .actionBox{
+    width: 30px; 
+    height: 30px; 
+    background-color: #2196F3; 
+    border-radius: 20px; 
+    text-align: center; 
+    line-height: 30px; 
+    position: relative;
+    color: #000;
+    font-size: 20px;
+    
+  }
+  .other-reactionBox .actionBoxs{
+    display: flex;
+    flex-direction: column;
+    width: 30px; 
+    height: 30px; 
+    /* background-color: #2196F3;  */
+    /* border-radius: 20px 20px 0 0 ;  */
+    text-align: center; 
+    line-height: 30px; 
+    position: relative;
+    color: #000;
+    display: none;
+    left: 1px;
+    z-index: 999;
+    font-size: 20px;
+    &:hover .reactedUser {
+      display: block;
+      
+    }
+  }
+  
+  
+  .other-reactionBox .numOfReaction{
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 12px;
+    /* background-color: #2196F3; */
+  }
+  
+  .other-reactionBox .actionContainer{
+    background-color: #2196F3; 
+    border-radius: 20px; 
+    z-index: 999; 
+    position: absolute; 
+    display: flex;
+  }
+
+.reactedUser{
+    display: none;
+    width: 100px;
+    background-color: #fff;
+    position: absolute;
+    top: -35px;
+    font-size: 12px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    
+  }
+
+.mreactedUser{
+    display: none;
+    width: 100px;
+    background-color: #fff;
+    position: absolute;
+    top: -35px;
+    font-size: 12px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transform: rotateY(180deg);
+    
+  }

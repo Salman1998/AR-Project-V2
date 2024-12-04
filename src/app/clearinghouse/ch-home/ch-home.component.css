@@ -1,0 +1,39 @@
+.main-container{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+}
+.card {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    float: left;
+}
+.img-container{
+    padding: 10px 10px 10px 10px;
+}
+.card-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.card-content {
+    padding: 0px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 8px 0;
+    color: #333;
+}

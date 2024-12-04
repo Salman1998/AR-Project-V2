@@ -1,0 +1,194 @@
+<div class="webLoader" *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+  
+  <div class="container">
+  
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 0;">
+          <h3>BCBS Prefix</h3>
+          <button class="btn btn-primary" (click)="onAddWebsite()">Add</button>
+          <!-- <button class="btn btn-primary" (click)="onStoreData()">Fatch</button> -->
+      </div>
+      <hr>
+  
+      <div class="filter-box" style="width: 500px; margin-bottom: 10px; position: relative;" (keydown.esc)="onClearSearch()">
+          <input class="search-input" type="text" placeholder="Enter value to search" class="form-control" [(ngModel)]="filterData">
+          <i class="fa-solid fa-xmark search-input-close" *ngIf="filterData" (click)="onClearSearch()"></i>
+      </div>
+  
+  <table class="table" >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Prefix</th>
+          <th scope="col">Type</th>
+          <th scope="col">State</th>
+          <th scope="col">Notes</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of BCBSPrefixData; let i = index">
+        <tr *ngFor="let entry of item | keyvalue | filterDataBCBSPrefix:filterData">
+              <th>{{ i+1 }}</th>
+              <td style="position: relative; left: 0;"> {{ entry?.value.name }} </td>
+              <td style="position: relative; left: 0;"> {{ entry?.value.prefix }} </td>
+              <td style="position: relative; left: 0;"> {{ entry?.value.type }} </td>
+              <td style="position: relative; left: 0;"> {{ entry?.value.state }} </td>
+              <td> <i class="fa-regular fa-note-sticky" style="cursor: pointer; padding-left: 12px;" (click)="noteBox.openNote(entry?.value.note, entry?.key, 'BCBSPrefix')"></i> <app-notepopup #noteBox></app-notepopup> </td> 
+              <td><i class="fa-regular fa-pen-to-square ticon" style="padding-left: 8px;" (click)="onOpenEdit(entry?.key, i)"></i></td>
+              <td><a><i class="fa-solid fa-trash ticon" style="padding-left: 18px;" (click)="onDeleted(entry?.key)"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  
+  
+  <div class="web-outter-container" *ngIf="isEdit">
+      <div class="web-container">
+          <h2>Edit Form</h2>
+          <form #Editform="ngForm" (ngSubmit)="onSubmitEdit(Editform)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                [ngModel]="editValue?.name"
+                required
+              />
+            </div>
+        
+            <div class="form-group">
+              <label for="prefix">Prefix</label>
+              <input
+                type="text"
+                id="prefix"
+                name="prefix"
+                class="form-control"
+                [ngModel]="editValue?.prefix"
+              />
+            </div>
+        
+            <div class="form-group" style="position: relative;">
+              <label for="type">Type</label>
+              <input
+                type="text"
+                id="type"
+                name="type"
+                class="form-control"
+                [ngModel]="editValue?.type"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="state">State</label>
+              <input
+                type="state"
+                id="state"
+                name="state"
+                class="form-control"
+                [ngModel]="editValue?.state"
+                required
+              />
+            </div>
+        
+    
+            <div class="form-group">
+              <label for="notes">Notes</label>
+              <textarea
+                id="note"
+                name="note"
+                class="form-control"
+                [ngModel]="editValue?.note"
+  
+              ></textarea>
+            </div>
+        
+  
+            <div class="form-buttons">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" (click)="onClear(Editform)">Clear</button>
+              <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+  
+      <div class="web-outter-container" *ngIf="isAdded">
+        <div class="web-container">
+            <h2>Add Form</h2>
+            <form #Addform="ngForm" (ngSubmit)="onSubmitAdded(Addform)">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control"
+                  ngModel
+                  #name="ngModel"
+                />
+              </div>
+          
+              <div class="form-group">
+                <label for="prefix">Prefix</label>
+                <input
+                  type="text"
+                  id="prefix"
+                  name="prefix"
+                  class="form-control"
+                  ngModel
+                  #userID="ngModel"
+                />
+              </div>
+          
+              <div class="form-group" style="position: relative;">
+                <label for="type">Type</label>
+                <input
+                  type="text"
+                  id="type"
+                  name="type"
+                  class="form-control"
+                  ngModel
+                  #pass="ngModel"
+                />
+              </div>
+        
+              <div class="form-group">
+                <label for="state">State</label>
+                <input
+                  type="state"
+                  id="state"
+                  name="state"
+                  class="form-control"
+                  ngModel
+                  #url="ngModel"
+                />
+              </div>
+          
+      
+              <div class="form-group">
+                <label for="notes">Notes</label>
+                <textarea
+                  id="notes"
+                  name="note"
+                  class="form-control"
+                  ngModel
+                  #note="ngModel"
+                ></textarea>
+              </div>
+          
+    
+              <div class="form-buttons">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" (click)="onClear(Addform)">Clear</button>
+                <button type="button" class="btn btn-danger" (click)="onClose(Addform)">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
