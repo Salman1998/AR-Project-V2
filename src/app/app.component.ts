@@ -3,12 +3,13 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AutoLogoutService } from './auth/autologout.service';
-import { AdminService } from './admin/admin.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit, OnDestroy {
   private timeSubscription: Subscription;
   private authSubscription: Subscription;
@@ -19,7 +20,6 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private autoLogoutService: AutoLogoutService,
     private afAuth: AngularFireAuth,
-    private adminService: AdminService
   ) {
     this.authState$ = this.afAuth.authState;
   }

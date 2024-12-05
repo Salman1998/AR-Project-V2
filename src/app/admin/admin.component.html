@@ -22,19 +22,19 @@
     </tbody>
   </table>
 
-<div class="overlay" *ngIf="isEdit && isAdmin">
+<div class="overlay" *ngIf="editState.isEdit && isAdmin">
   <div class="form-container">
     <form #userEdit="ngForm" (ngSubmit)="onSubmitEdit(userEdit.value)">
       <h2>User edit form</h2>
       
       <label for="name">Name:</label>
-      <input type="text" id="name" [ngModel]="editValue.name" name="name" placeholder="Enter your name" required>
+      <input type="text" id="name" [ngModel]="editState.editValue.name" name="name" placeholder="Enter your name" required>
       
       <label for="email">Email:</label>
-      <input type="email" id="email" [ngModel]="editValue.email" name="email" placeholder="Enter your email" required>
+      <input type="email" id="email" [ngModel]="editState.editValue.email" name="email" placeholder="Enter your email" required>
       
       <label for="type">Type:</label>
-      <select id="type" [ngModel]="editValue.type" name="type" required>
+      <select id="type" [ngModel]="editState.editValue.type" name="type" required>
         <option value="user">User</option>
         <option value="admin">Admin</option>
       </select>
