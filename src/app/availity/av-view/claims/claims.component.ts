@@ -29,12 +29,13 @@ export class ClaimsComponent implements OnDestroy{
   isAdded: boolean = false;
   isLoading: boolean = true
   isAdmin: boolean = false;
+  private adminSub: Subscription;
   constructor(private insuranceService: InsuranceService, private adminService: AdminService) {}
 
   ngOnInit(): void {
-    // this.adminService.isAdmin().then((user) => {
-    //   this.isAdmin = user;
-    // });
+    this.adminSub = this.adminService.isAdmin.subscribe(data => {
+      this.isAdmin = data
+    })
     this.sub2 = this.insuranceService.isLoading.subscribe(isLoading => this.isLoading = isLoading)
 
     this.insuranceService.fatchInsurance();
@@ -141,5 +142,6 @@ export class ClaimsComponent implements OnDestroy{
       this.sub2.unsubscribe();
       this.sub3.unsubscribe();
       this.sub4.unsubscribe();
+      this.adminSub.unsubscribe();
   }
 }

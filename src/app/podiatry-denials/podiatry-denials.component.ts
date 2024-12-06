@@ -26,19 +26,22 @@ export class PodiatryDenialsComponent {
   passwordVisible: boolean = false;  // This keeps track of password visibility
   editValue: {};
   changedSub: Subscription
+  adminSub: Subscription
 
   constructor(private PDS: podiatryDenialsService, private adminService: AdminService){
 
   }
 
   ngOnInit(){
-      // this.adminService.isAdmin().then(user => this.isAdmin = user);
+      this.adminSub = this.adminService.isAdmin.subscribe(data => this.isAdmin = data)
       this.PDS.getPodiatryData();
       this.PDS.fatchPodiatryData();
       this.changedSub = this.PDS.changePodiatryDenials.subscribe(data => {
         // console.log(data)
         this.mailingDetails = data;
       });
+
+
   }
 
   onStoreData(){
@@ -132,17 +135,18 @@ export class PodiatryDenialsComponent {
     document.body.style.overflow = 'hidden'; // Hide scroll on the body
     document.documentElement.style.overflow = 'hidden'; // Hide scroll on the html
 
-    // this.previousScrollPosition = window.scrollY;    
+
 }
 
 private enableScroll() {
     document.body.style.overflow = 'auto'; // Restore scroll on the body
     document.documentElement.style.overflow = 'auto'; // Restore scroll on the html
-    // window.scrollTo(0, this.previousScrollPosition);
+
     
 }
 
   ngOnDestory(){
     this.changedSub.unsubscribe();
+    this.adminSub.unsubscribe();
   }
 }

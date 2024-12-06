@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
 import { ClaimMailingDetailsModel } from "./claim-mailing-details.model";
 import { Subject, Subscription } from "rxjs";
+import { AdminService } from "../admin/admin.service";
 
 @Injectable({ providedIn: 'root' })
 export class ClaimMailingDetailsService implements OnDestroy {
@@ -10,8 +11,13 @@ export class ClaimMailingDetailsService implements OnDestroy {
   private billingData: ClaimMailingDetailsModel[] = [];
   billingSub: Subscription;
   isLoading = new Subject<boolean>();
+  isAdmin = new Subject<boolean>();
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase, private adminService: AdminService) {
+    this.adminService.isAdmin.subscribe(data => {
+      this.isAdmin.next(data)
+    })
+  }
 
   addBillingAddress(data: ClaimMailingDetailsModel): void {
     this.isLoading.next(true)

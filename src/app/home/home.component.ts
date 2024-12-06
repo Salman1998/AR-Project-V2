@@ -12,7 +12,7 @@ export class HomeComponent {
 
 
   ngOnInit(){
-
+    this.adminService.fetchData();
   }
 
 }

@@ -25,21 +25,16 @@ export class BcbsPrefixComponent {
   private changedSub: Subscription;
   private errorSub: Subscription;
   private loadingSub: Subscription;
-
+  private adminSub: Subscription
   constructor(private BCBSPrefixService: BCBSPrefixService, private adminService: AdminService) {}
 
   ngOnInit(): void {
     this.loadBCBSPrefix();
     this.setupSubscriptions();
+    this.adminSub = this.adminService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin)
   }
-
-  // Load initial data and set up necessary subscriptions
   private loadBCBSPrefix(): void {
-    // this.isAdmin = this.adminService.isAdmin();
-    // this.adminService.isAdmin().then((user) => {
-    //   this.isAdmin = user;
-    //   console.log(this.isAdmin)
-    // });
+
     this.BCBSPrefixService.fetchBCBSPrefix();
     this.BCBSPrefixData = this.BCBSPrefixService.getBCBSPrefixData();
   }
@@ -171,5 +166,6 @@ export class BcbsPrefixComponent {
     this.changedSub?.unsubscribe();
     this.errorSub?.unsubscribe();
     this.loadingSub?.unsubscribe();
+    this.adminSub?.unsubscribe();
   }
 }

@@ -16,35 +16,40 @@ export class ClaimMailingDetailsComponent {
   dumpData: string;
   isLoading: boolean = true;
   filterData;
-  error
+  error;
   isEdit: boolean = false;
   isAdded: boolean = false;
-  isAdmin: boolean = false;
   editKey: any;
   editIndex: number;
   passStrength: string;
   passwordVisible: boolean = false;  // This keeps track of password visibility
   editValue: {};
-  changedSub: Subscription
-  isLoadingSub: Subscription
-  sub1: Subscription
+  isAdminUser: boolean = false;
 
-  constructor( private CMDS: ClaimMailingDetailsService, private adminService: AdminService){
+  private changedSub: Subscription;
+  private isLoadingSub: Subscription;
+  private adminSub: Subscription;
+  
+  constructor(
+    private CMDS: ClaimMailingDetailsService,
+    private adminService: AdminService
+  ) {}
 
-  }
-
-  ngOnInit(){
-    // this.adminService.isAdmin().then((user) => {
-        //     this.isAdmin = user;
-        //   });
+  ngOnInit(): void {
     this.CMDS.getBillingData();
     this.CMDS.fetchBillingData();
+
     this.changedSub = this.CMDS.changeBillingDBData.subscribe(data => {
-     this.mailingDetails = data;
-    })
+      this.mailingDetails = data;
+    });
+
     this.isLoadingSub = this.CMDS.isLoading.subscribe(isloading => {
-     this.isLoading = isloading;
- })
+      this.isLoading = isloading;
+    });
+
+    this.adminSub = this.adminService.isAdmin.subscribe(isAdmin => {
+      this.isAdminUser = isAdmin;
+    });
   }
 
   onStoreData(){
@@ -60,36 +65,33 @@ export class ClaimMailingDetailsComponent {
     this.filterData = '';
   }
 
-  onOpenEdit(key: any, i: number){
-    if(this.isAdmin){
-      this.disableScroll()
-      this.isEdit = true;
-      this.editKey = key;
-      this.editIndex = i
-      this.editValue = this.mailingDetails[i][key];
-      return
+  onOpenEdit(key: any, i: number): void {
+    if (!this.isAdminUser) {
+      alert('You do not have permission to edit this data.');
+      return;
     }
-
-    alert('You are not allowed to edit this data! Please contact the admin.');
-
-    
+    this.disableScroll();
+    this.isEdit = true;
+    this.editKey = key;
+    this.editIndex = i;
+    this.editValue = this.mailingDetails[i][key];
   }
+
+
   onAddMailing(){
     this.disableScroll()
     this.isAdded = !this.isAdded;
   }
 
 
-  onDeleted(deleteKey: any){
-    if(this.isAdmin){
-      if(confirm('Are you sure you want to delete!')){
-        this.CMDS.deleteBillingData(deleteKey);
-      }
-      return  
+  onDeleted(deleteKey: any): void {
+    if (!this.isAdminUser) {
+      alert('You do not have permission to delete this data.');
+      return;
     }
-
-    alert('You are not allowed to edit this data! Please contact the admin.');    
-    
+    if (confirm('Are you sure you want to delete?')) {
+      this.CMDS.deleteBillingData(deleteKey);
+    }
   }
 
 
@@ -126,26 +128,29 @@ export class ClaimMailingDetailsComponent {
     Addform.reset();
   }
 
-  onSubmitEdit(form: NgForm){
-    this.CMDS.editBilling(form.value, this.editKey)
-    this.isEdit = false
-    this.enableScroll()
+  onSubmitEdit(form: NgForm): void {
+    if (!this.isAdminUser) {
+      alert('You do not have permission to edit this data.');
+      return;
+    }
+    this.CMDS.editBilling(form.value, this.editKey);
+    this.isEdit = false;
+    this.enableScroll();
   }
 
   private disableScroll() {
-    document.body.style.overflow = 'hidden'; // Hide scroll on the body
-    document.documentElement.style.overflow = 'hidden'; // Hide scroll on the html 
-}
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
 
-private enableScroll() {
-    document.body.style.overflow = 'auto'; // Restore scroll on the body
-    document.documentElement.style.overflow = 'auto'; // Restore scroll on the html
-    
-}
+  private enableScroll() {
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+  }
 
   ngOnDestory(){
-    this.changedSub.unsubscribe();
-    this.isLoadingSub.unsubscribe();
-    this.sub1.unsubscribe();
+    this.changedSub?.unsubscribe();
+    this.isLoadingSub?.unsubscribe();
+    this.adminSub?.unsubscribe();
   }
 }

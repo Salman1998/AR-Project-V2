@@ -24,6 +24,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   private changedSub: Subscription;
   private errorSub: Subscription;
   private loadingSub: Subscription;
+  private adminSub: Subscription;
 
   constructor(private adminService: AdminService, private websiteService: WebsiteService) {}
 
@@ -34,9 +35,9 @@ export class WebsiteComponent implements OnInit, OnDestroy {
 
   // Load initial data and set up necessary subscriptions
   private loadWebsiteData(): void {
-    // this.adminService.isAdmin().then((user) => {
-    //   this.isAdmin = user;
-    // });
+    this.adminSub = this.adminService.isAdmin.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+    })
     this.websiteService.fetchWebsiteData();
     this.websiteData = this.websiteService.getWebsiteData();
   }
@@ -157,5 +158,6 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     this.changedSub?.unsubscribe();
     this.errorSub?.unsubscribe();
     this.loadingSub?.unsubscribe();
+    this.adminSub?.unsubscribe();
   }
 }

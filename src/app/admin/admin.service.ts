@@ -106,7 +106,7 @@
 
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
-import { Subject, Subscription } from "rxjs";
+import { BehaviorSubject, Subject, Subscription } from "rxjs";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 
 @Injectable({ providedIn: 'root' })
@@ -115,7 +115,7 @@ export class AdminService {
   private readonly adminUsersPath = 'adminUsers/0';
   changedAdminUser = new Subject<string[]>();
   changedUser = new Subject<any[]>();
-  isAdmin = new Subject<boolean>();
+  isAdmin = new BehaviorSubject<boolean>(false);
 
   private adminUsers: string[] = [];
   private users: any[] = [];
@@ -127,6 +127,7 @@ export class AdminService {
       this.currentUserUID = user?.uid || null;
       this.checkAdminStatus();
     });
+    this.fetchAdminUsers();
   }
 
   fetchData(): void {
@@ -147,12 +148,17 @@ export class AdminService {
     );
   }
 
+  // private checkAdminStatus(): void {
+  //   if (this.currentUserUID && this.adminUsers.includes(this.currentUserUID)) {
+  //     this.isAdmin.next(true);
+  //   } else {
+  //     this.isAdmin.next(false);
+  //   }
+  // }
+
   private checkAdminStatus(): void {
-    if (this.currentUserUID && this.adminUsers.includes(this.currentUserUID)) {
-      this.isAdmin.next(true);
-    } else {
-      this.isAdmin.next(false);
-    }
+    const isAdmin = !!this.currentUserUID && this.adminUsers.includes(this.currentUserUID);
+    this.isAdmin.next(isAdmin); // Emit the latest value
   }
 
   editUserData(editData: any, editKey: string): void {
@@ -175,6 +181,17 @@ export class AdminService {
       }
     }
   }
+
+  private fetchAdminUsers(): void {
+    this.db.object(this.adminUsersPath).valueChanges().subscribe(data => {
+      if (data) {
+        this.adminUsers = Object.values(data) as string[];
+        this.checkAdminStatus();
+      }
+    });
+  }
+
+  
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
